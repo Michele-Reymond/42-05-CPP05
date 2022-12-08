@@ -20,19 +20,19 @@ class Form {
         int         getGradeToSign() const;
         int         getGradeToExecute() const;
         bool        getSignStatus() const;
-        void        beSigned(const Bureaucrat &bureaucrat) const; 
+        void        beSigned(const Bureaucrat &bureaucrat); 
 
         class GradeTooHighException : public std::exception {
             public:
                 virtual const char* what() const throw() {
-                    return "Grade too high";	
+                    return "too high";	
                 }
         };
 
         class GradeTooLowException : public std::exception {
             public:
                 virtual const char* what() const throw() {
-                    return "Grade too low";	
+                    return "too low";	
                 }
         };
 

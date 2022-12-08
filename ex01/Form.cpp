@@ -23,7 +23,7 @@ Form::Form(const Form& instance) : _name(instance._name) {
 }
 
 Form::~Form() {
-    std::cout << "Form \"" << this->_name << "\" is destructed" << std::endl;
+    std::cout << "Form \"" << this->_name << "\": is destructed" << std::endl;
 }
 
 // --------- Fonctions ------------
@@ -44,10 +44,11 @@ bool Form::getSignStatus() const {
     return this->_isSigned;
 }
 
-void Form::beSigned(const Bureaucrat &bureaucrat) const{
+void Form::beSigned(const Bureaucrat &bureaucrat){
     if (bureaucrat.getGrade() > this->_gradeToSign) {
         throw Form::GradeTooLowException();
-    }
+    } else
+        this->_isSigned = true;
 }
 
 void Form::_checkGrade(std::string message) {
@@ -85,7 +86,7 @@ Form &Form::operator=(const Form &instance) {
 std::ostream &operator<<(std::ostream &out, const Form &instance)
 {
 	out << instance.getName() << ": grade to sign (" << instance.getGradeToSign()
-        << "), grade to execute (" << instance.getGradeToExecute() << ") ";
+        << "), grade to execute (" << instance.getGradeToExecute() << ")";
     if (instance.getSignStatus())
         out << ", this form is signed" << std::endl;
     else

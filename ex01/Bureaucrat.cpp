@@ -40,12 +40,13 @@ void Bureaucrat::decrease() {
 
 void Bureaucrat::signForm(Form &form) {
     std::cout << this->_name;
-    if (form.getGradeToSign() < this->_grade) {
-        std::cout << " couldn't sign " << form.getName() << ": Grade too low" << std::endl;
-    } else if (form.getSignStatus() == true)
-        std::cout << " couldn't sign " << form.getName() << " : form already signed!" << std::endl;
-    else
-        std::cout << " signed " << form.getName() << std::endl;
+    try {
+        form.beSigned(*this);
+        std::cout << " signed \"" << form.getName() << "\"" << std::endl;
+    }
+    catch (Form::GradeTooLowException & e) {
+        std::cout << " couldn't sign " << form.getName() << " because his grade to sign is " << e.what() << std::endl;
+    }
 }
 
 void Bureaucrat::checkGrade(std::string message) {
