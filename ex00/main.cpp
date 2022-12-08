@@ -5,31 +5,58 @@
 #define COLOR           "\x1b[2m"
 
 int main() {
-    std::cout << COLOR "------ BUREAUCRAT CONSTRUCTION OK -------" COLOR_RESET << std::endl;
+    std::cout << COLOR "------ BUREAUCRAT OK -------" COLOR_RESET << std::endl;
     std::cout << std::endl;
-    //OK
-    Bureaucrat Johnson(1, "Johnson");
-    Bureaucrat Smith;
-    std::cout << Smith;
-    Bureaucrat Parker(150, "Parker");
-    Parker.increase();
 
+    try {
+        Bureaucrat roger(1, "Roger");
+        Bureaucrat parker(150, "Parker");
+        Bureaucrat smith;
+        std::cout << smith;
+    }
+    catch (Bureaucrat::GradeTooHighException & e) {
+        std::cout << "Error: " << e.what() << std::endl;
+    }
+    catch (Bureaucrat::GradeTooLowException & e) {
+        std::cout << "Error: " << e.what() << std::endl;
+    }
     std::cout << std::endl << std::endl;
-    std::cout << COLOR "------ BUREAUCRAT CONSTRUCTION NOT OK -------" COLOR_RESET << std::endl;
+    std::cout << COLOR "------ BUREAUCRAT NOT OK -------" COLOR_RESET << std::endl;
     std::cout << std::endl;
-
-    //Pas OK
-    // Bureaucrat Roger(180, "Roger");
-
-    // Bureaucrat Roger(150, "Roger");
-    // Roger.decrease(); // 151
-
-    Bureaucrat Roger(1, "Roger");
-    Roger.increase();
-
-
-    std::cout << std::endl << std::endl;
-    std::cout << COLOR "------ BUREAUCRAT DESTRUCTION -------" COLOR_RESET << std::endl;
-    std::cout << std::endl;
+    try {
+        Bureaucrat simson(151, "Simson");
+    }
+    catch (Bureaucrat::GradeTooHighException & e) {
+        std::cout << "Error: " << e.what() << std::endl;
+        std::cout << std::endl;
+    }
+    catch (Bureaucrat::GradeTooLowException & e) {
+        std::cout << "Error: " << e.what() << std::endl;
+        std::cout << std::endl;
+    }
+    try {
+        Bureaucrat brandon(150, "Brandon");
+        brandon.decrease();
+    }
+    catch (Bureaucrat::GradeTooHighException & e) {
+        std::cout << "Error: " << e.what() << std::endl;
+        std::cout << std::endl;
+    }
+    catch (Bureaucrat::GradeTooLowException & e) {
+        std::cout << "Error: " << e.what() << std::endl;
+        std::cout << std::endl;
+    }
+    try {
+        Bureaucrat madison(1, "Madison");
+        madison.increase();
+    }
+    catch (Bureaucrat::GradeTooHighException & e) {
+        std::cout << "Error: " << e.what() << std::endl;
+        std::cout << std::endl;
+    }
+    catch (Bureaucrat::GradeTooLowException & e) {
+        std::cout << "Error: " << e.what() << std::endl;
+        std::cout << std::endl;
+    }
     return 0;
 }

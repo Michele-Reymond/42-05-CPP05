@@ -38,6 +38,16 @@ void Bureaucrat::decrease() {
     checkGrade("The grade decreased");
 }
 
+void Bureaucrat::signForm(Form &form) {
+    std::cout << this->_name;
+    if (form.getGradeToSign() < this->_grade) {
+        std::cout << " couldn't sign " << form.getName() << ": Grade too low" << std::endl;
+    } else if (form.getSignStatus() == true)
+        std::cout << " couldn't sign " << form.getName() << " : form already signed!" << std::endl;
+    else
+        std::cout << " signed " << form.getName() << std::endl;
+}
+
 void Bureaucrat::checkGrade(std::string message) {
     std::cout << this->_name << " with grade " << this->_grade << ": ";
     if (this->_grade < 1)
