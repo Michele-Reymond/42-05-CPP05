@@ -4,8 +4,8 @@ SRCS	= 	main.cpp \
 			ShrubberyCreationForm.cpp \
 			RobotomyRequestForm.cpp \
 			PresidentialPardonForm.cpp
-CFLAGS	= -Wall -Werror -Wextra -std=c++98
-CC		= c++
+CFLAGS	= -Werror -Wextra -Wall -std=c++98 -pedantic
+CC		= g++-12
 NAME	= bureaucrat
 OBJS	= ${SRCS:.cpp=.o}
 RM		= rm -f
